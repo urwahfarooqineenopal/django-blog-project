@@ -1,0 +1,28 @@
+<!-- blog/templates/blog/blog_list.html -->
+{% extends 'blog/base.html' %}
+
+{% block title %}Blog List{% endblock %}
+
+{% block content %}
+
+<!-- Jumbotron Section -->
+<div class="p-5 mb-4 bg-primary text-white rounded-3">
+  <div class="container py-5">
+    <h1 class="display-5 fw-bold">Welcome to My Blog</h1>
+    <p class="col-md-8 fs-4">Read my latest blogs.</p>
+  </div>
+</div>
+
+<!-- Blog List -->
+<h2>All Blog Posts</h2>
+<ul>
+    {% for blog in blogs %}
+        <li>
+            <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+        </li>
+    {% empty %}
+        <li>No blogs available.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
